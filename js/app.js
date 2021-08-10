@@ -78,10 +78,11 @@ for (const menu of menuLinks) {
 
 // Scroll to section on link click
 menuLinks.forEach((item) => {
-  item.addEventListener("click", () => {
+  item.addEventListener("click", (event) => {
+    event.preventDefault();
     removeActiveClass();
     const el = document.getElementById(item.dataset.link);
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
     addActiveClass(el);
   });
 });
