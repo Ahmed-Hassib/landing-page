@@ -74,6 +74,14 @@ section {
 .navbar__menu li {
   display: inline-block;
   color: rgba(0, 31, 113, 1);
+  cursor: pointer;
+}
+.navbar__menu li.active-section {
+  background: rgb(0, 0, 0);
+}
+
+.navbar__menu li.active-section a {
+  color: rgb(255, 255, 255, 1);
 }
 
 .navbar__menu .menu__link {

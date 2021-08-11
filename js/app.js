@@ -58,6 +58,9 @@ function removeActiveClass() {
   for (const section of allSections) {
     section.classList.remove("active-section");
   }
+  for (const link of menuLinks) {
+    link.parentElement.classList.remove("active-section");
+  }
 }
 
 // Scroll to anchor ID using scrollTO event
@@ -83,6 +86,7 @@ menuLinks.forEach((item) => {
     removeActiveClass();
     const el = document.getElementById(item.dataset.link);
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+    addActiveClass(item.parentElement);
     addActiveClass(el);
   });
 });
