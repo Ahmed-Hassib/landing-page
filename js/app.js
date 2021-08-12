@@ -59,7 +59,7 @@ function removeActiveClass() {
     section.classList.remove("active-section");
   }
   for (const link of menuLinks) {
-    link.parentElement.classList.remove("active-section");
+    link.classList.remove("active");
   }
 }
 
@@ -86,7 +86,7 @@ menuLinks.forEach((item) => {
     removeActiveClass();
     const el = document.getElementById(item.dataset.link);
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    addActiveClass(item.parentElement);
+    item.classList.add("active");
     addActiveClass(el);
   });
 });
