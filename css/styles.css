@@ -85,9 +85,15 @@ section {
   color: #000;
 }
 
-@media only screen and (max-width: 20em) {
+@media only screen and (min-width: 20em) {
   .navbar__menu .menu__link {
     font-size: 10px;
+  }
+}
+
+@media only screen and (min-width: 35em) {
+  .navbar__menu .menu__link {
+    font-size: 1rem;
   }
 }
 
