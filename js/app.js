@@ -20,16 +20,13 @@
 let navbarList = document.getElementById("navbar__list");
 let menuLinks = [];
 let allSections = document.getElementsByTagName("section");
+let currSection = localStorage.getItem("curr-section") || "section1";
 /**
  * End Global Variables
- * Start Helper Functions
- *
  */
 
 /**
- * End Helper Functions
  * Begin Main Functions
- *
  */
 
 // build the nav
@@ -44,31 +41,38 @@ for (const section of allSections) {
   // add navbar__list class
   listLink.classList.add("menu__link");
 
+  // add active class to link
+  if (listLink.dataset.link == currSection) {
+    const el = document.getElementById(listLink.dataset.link);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    addActiveClass(el, listLink);
+  }
+
   // add to menu array to push them into the navbar menu
   menuLinks.push(listLink);
 }
 
-// Add class 'active' to section when near top of viewport
 // function to add an active class
-function addActiveClass(el) {
-  el.classList.add("active-section");
+function addActiveClass(...elements) {
+  console.log(elements);
+  for (const element of elements) {
+    element.classList.add("active");
+  }
 }
+
 // function to remove an active class from all section
 function removeActiveClass() {
   for (const section of allSections) {
-    section.classList.remove("active-section");
+    section.classList.remove("active");
   }
   for (const link of menuLinks) {
     link.classList.remove("active");
   }
 }
 
-// Scroll to anchor ID using scrollTO event
-
 /**
  * End Main Functions
  * Begin Events
- *
  */
 
 // Build menu
@@ -86,9 +90,11 @@ menuLinks.forEach((item) => {
     removeActiveClass();
     const el = document.getElementById(item.dataset.link);
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    item.classList.add("active");
-    addActiveClass(el);
+    addActiveClass(el, item);
+    localStorage.setItem("curr-section", item.dataset.link);
   });
 });
 
-// Set sections as active
+/**
+ * End Events
+ */
