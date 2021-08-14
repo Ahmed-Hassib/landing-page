@@ -54,7 +54,6 @@ for (const section of allSections) {
 
 // function to add an active class
 function addActiveClass(...elements) {
-  console.log(elements);
   for (const element of elements) {
     element.classList.add("active");
   }
