@@ -97,3 +97,22 @@ menuLinks.forEach((item) => {
 /**
  * End Events
  */
+
+window.onscroll = () => {
+  for (const section of allSections) {
+    let top = window.scrollY;
+    let offset = section.offsetTop - 150;
+    let height = section.offsetHeight;
+    let id = section.getAttribute("id");
+
+    if (top >= offset && top <= offset + height) {
+      removeActiveClass();
+      section.classList.add("active");
+      menuLinks.forEach((item) => {
+        if (item.dataset.link == id) {
+          item.classList.add("active");
+        }
+      });
+    }
+  }
+};
